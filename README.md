@@ -189,8 +189,10 @@ This will store Elasticsearch data inside `/path/to/storage`.
 ## Customized elasticsearch storage path 
 ```yml
 volumes:
-       - /data/elk/lkasler/elasdata:/usr/share/elasticsearch/data
+      - ../elasdata:/usr/share/elasticsearch/data
 ```
+Be sure that the container has sufficient rights to folder `elasdata`.
+
 ## Access permission
 
 In some environments dependending on user rights the configuration file cannot be accessed. Be sure to give rx rights to config files (yml) to the user who runs docker under docker-elk folder before running `docker-compose up -d`.
