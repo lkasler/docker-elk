@@ -5,7 +5,7 @@ services:
   elasticsearch:
     volumes:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - ../elasdata:/usr/share/elasticsearch/data
+      - /data/elk/lkasler/elasdata:/usr/share/elasticsearch/data
     privileged: true
 
   logstash:
