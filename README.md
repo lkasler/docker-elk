@@ -75,6 +75,12 @@ You can also choose to run it in background (detached mode):
 $ docker-compose up -d
 ```
 
+To run overriding options defined in docker-compose-dev.yml run:
+
+```bash
+$ docker-compose -f docker-compose.yml -f docker-compose-dev.yml up -d
+```
+
 Give Kibana about 2 minutes to initialize, then access the Kibana web UI by hitting
 [http://localhost:5601](http://localhost:5601) with a web browser.
 
