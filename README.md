@@ -199,10 +199,6 @@ volumes:
 ```
 Be sure that the container has sufficient rights to folder `elasdata`.
 
-## Access permission
-
-In some environments dependending on user rights the configuration file cannot be accessed. Be sure to give rx rights to config files (yml) to the user who runs docker under docker-elk folder before running `docker-compose up -d`.
-
 ## Feed logstash
 
 To feed logstash with log files you can use filebeat or syslog-ng.
@@ -232,6 +228,10 @@ log {
 	destination(d_app); 
 }; 
 ```
+
+## Access permission
+
+In some environments dependending on user rights the configuration file cannot be accessed. Be sure to give rx rights to config files (yml) to the user who runs docker under docker-elk folder before running `docker-compose up -d`.
 
 **NOTE:** beware of these OS-specific considerations:
 * **Linux:** the [unprivileged `elasticsearch` user][esuser] is used within the Elasticsearch image, therefore the
