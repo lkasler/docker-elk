@@ -203,6 +203,36 @@ Be sure that the container has sufficient rights to folder `elasdata`.
 
 In some environments dependending on user rights the configuration file cannot be accessed. Be sure to give rx rights to config files (yml) to the user who runs docker under docker-elk folder before running `docker-compose up -d`.
 
+## Feed logstash
+
+To feed logstash with log files you can use filebeat or syslog-ng.
+The following example is a syslog-ng configuration file:
+
+```conf
+# name: syslog-ng_app.conf
+
+############################################################
+# REMARK
+# Change `app` with you current application name.
+# 1) Add conbfiguration file to /opt/syslog-ng/etc/syslog-ng_app.conf
+# 2) Restart the syslog-ng service, for example in Red Hat: `systemctl restart syslog-ng`
+############################################################
+
+# source log file to send to the logstash server
+source s_app {
+  file ("/var/app/app.log" encoding(UTF-8) flags(no-parse));
+};
+
+destination d_app  { 
+	tcp("logstash_service_host" port(5000)); 
+};
+
+log { 
+	source(s_app); 
+	destination(d_app); 
+}; 
+```
+
 **NOTE:** beware of these OS-specific considerations:
 * **Linux:** the [unprivileged `elasticsearch` user][esuser] is used within the Elasticsearch image, therefore the
   mounted data directory must be owned by the uid `1000`.
