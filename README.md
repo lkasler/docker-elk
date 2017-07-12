@@ -197,7 +197,7 @@ This will store Elasticsearch data inside `/path/to/storage`.
 volumes:
       - ../elasdata:/usr/share/elasticsearch/data
 ```
-Be sure that the container has sufficient rights to folder `elasdata`.
+Be sure that the container has sufficient rights to folder `elasdata`. For quick and dirty solution you can try temporary: chmod -R a+rwx /pathto/elasdata
 
 ## Feed logstash
 
